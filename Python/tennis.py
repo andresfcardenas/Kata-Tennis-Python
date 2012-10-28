@@ -1,4 +1,7 @@
 #! /usr/bin/env python
+# -*- coding: utf-8 -*-
+# Author: Andres F. Cardenas (Andrewnix)
+# Email: akardenasjimenez@gmail.com
 import random
 
 REGULATORY_SCORES = ['0', '15', '30', '40', 'Deuce', 'Advantage', 'Win']
@@ -61,8 +64,7 @@ def game(p1, p2):
             p1.modify_score(player, 4, False)
             p2.modify_score(player, 4, False)
             print 'Player {0} Scored!!! 40 - 40 Deuce\n'.format(player)
-
-        if (p1.get_score() == REGULATORY_SCORES[5] and
+        elif (p1.get_score() == REGULATORY_SCORES[5] and
             p2.get_score() == REGULATORY_SCORES[5]):
             p1.modify_score(player, 4, False)
             p2.modify_score(player, 4, False)
