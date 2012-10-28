@@ -61,8 +61,8 @@ def game(p1, p2):
 
         if (p1.get_score() == p2.get_score() == REGULATORY_SCORES[3] or
             p1.get_score() == p2.get_score() == REGULATORY_SCORES[5]):
-            p1.modify_score(player, 4, False)
-            p2.modify_score(player, 4, False)
+            p1.modify_score(1, 4, False)
+            p2.modify_score(2, 4, False)
             print 'Player {0} Scored!!! 40 - 40 Deuce\n'.format(player)
 
         if (p1.get_score() == REGULATORY_SCORES[6] or
