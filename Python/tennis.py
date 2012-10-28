@@ -34,33 +34,42 @@ def game(p1, p2):
     """
     while True:
         player = random.randrange(1, 3)
-        if player == 1:
-            p1.modify_score(player)
-        else:
-            p2.modify_score(player)
 
-        if (p1.get_score() == REGULATORY_SCORES[4] and
-            p2.get_score() < REGULATORY_SCORES[3]):
-            p1.modify_score(player, 6)
-        elif (p1.get_score() < REGULATORY_SCORES[3] and
-            p2.get_score() == REGULATORY_SCORES[4]):
-            p2.modify_score(player, 6)
+        if player == 1:
+            if (p1.get_score() == REGULATORY_SCORES[3] and
+                p2.get_score() < REGULATORY_SCORES[3]):
+                p1.modify_score(player, 6)
+                return 0
+            elif (p2.get_score() == REGULATORY_SCORES[5] and
+                p1.get_score() == REGULATORY_SCORES[4]):
+                p1.modify_score(player, printed=False)
+            else:
+                p1.modify_score(player)
+        else:
+            if (p1.get_score() < REGULATORY_SCORES[3] and
+                p2.get_score() == REGULATORY_SCORES[3]):
+                p2.modify_score(player, 6)
+                return 0
+            elif (p2.get_score() == REGULATORY_SCORES[4] and
+                p1.get_score() == REGULATORY_SCORES[5]):
+                p2.modify_score(player, printed=False)
+            else:
+                p2.modify_score(player)
 
         if (p1.get_score() == REGULATORY_SCORES[3] and
             p2.get_score() == REGULATORY_SCORES[3]):
             p1.modify_score(player, 4, False)
             p2.modify_score(player, 4, False)
+            print 'Player {0} Scored!!! 40 - 40 Deuce\n'.format(player)
 
         if (p1.get_score() == REGULATORY_SCORES[5] and
             p2.get_score() == REGULATORY_SCORES[5]):
             p1.modify_score(player, 4, False)
             p2.modify_score(player, 4, False)
+            print 'Player {0} Scored!!! 40 - 40 Deuce\n'.format(player)
 
-        if p1.get_score() == REGULATORY_SCORES[6]:
-            p1.modify_score(player, 4, False)
-            return 0
-        elif p2.get_score() == REGULATORY_SCORES[6]:
-            p2.modify_score(player, 4, False)
+        if (p1.get_score() == REGULATORY_SCORES[6] or
+            p2.get_score() == REGULATORY_SCORES[6]):
             return 0
 
 p1 = Player()
